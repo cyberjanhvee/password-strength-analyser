@@ -1,0 +1,78 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Password Strength Analyzer</title>
+
+    <!-- CSS -->
+    <link rel="stylesheet" href="style.css">
+</head>
+
+<body>
+
+    <!-- TITLE -->
+    <div class="card">
+        <h1 class="title">PassStrength</h1>
+    </div>
+
+    <!-- INFO -->
+    <h5>Welcome to PassStrength</h5>
+
+    <p>
+        Here we provide info of how strong your password is.<br>
+        Is it easy to decode or difficult..!<br>
+        Enter your password below and analyze it.
+    </p>
+
+
+    <!-- INPUT SECTION -->
+    <div class="input-area">
+
+        <input 
+            type="password" 
+            id="password" 
+            placeholder="Enter your password"
+        >
+
+        <button class="analyze" onclick="checkStrength()">
+            Analyze Password
+        </button>
+
+        <div id="result"></div>
+
+    </div>
+
+
+    <!-- BACKGROUND DECOR -->
+    <div class="bg-shapes">
+        <span></span>
+        <span></span>
+    </div>
+
+
+    <!-- JAVASCRIPT -->
+    <script src="logic.js"></script>
+
+    <!-- mouse light -->
+    <script>
+        document.addEventListener("mousemove", e => {
+            document.body.style.setProperty("--x", e.clientX + "px");
+            document.body.style.setProperty("--y", e.clientY + "px");
+        });
+    </script>
+
+    <!-- clear result when typing -->
+    <script>
+        document.getElementById("password")
+        .addEventListener("input", function(){
+            let r = document.getElementById("result");
+            r.innerText = "";
+            r.style.opacity = "0";
+            r.style.transform = "translateY(10px)";
+            r.className = "";
+        });
+    </script>
+
+</body>
+</html>
