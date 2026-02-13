@@ -1,8 +1,11 @@
-/* ===============================
-   GLOBAL
-================================*/
-body{
+/* ========== BASE ========== */
+*{
   margin: 0;
+  padding: 0;
+  box-sizing: border-box;
+}
+
+body{
   font-family: Arial, Helvetica, sans-serif;
   background-color:#1a001d;
   background-image:
@@ -10,10 +13,10 @@ body{
     linear-gradient(90deg, rgba(255,255,255,0.05) 1px, transparent 1px);
   background-size: 40px 40px;
   color: white;
+  overflow-x: hidden;
 }
 
-
-/* mouse light effect */
+/* mouse glow */
 body::before{
   content:"";
   position: fixed;
@@ -30,73 +33,62 @@ body::before{
   z-index:-1;
 }
 
-
-/* ===============================
-   TITLE
-================================*/
+/* ========== TITLE ========== */
 .card{
   text-align: center;
-  margin-top: 20px;
+  margin-top: 40px;
 }
 
 .title{
-  font-size: 90px;
+  font-size: 80px;
   font-style: italic;
   font-weight: bold;
-  letter-spacing: 2px;
-  text-decoration: underline;
-
   background: linear-gradient(90deg, #373046, #9e618d, #d3cedf);
   background-size: 200% auto;
   -webkit-background-clip: text;
   color: transparent;
-
   animation: move 3s linear infinite;
+  letter-spacing: 2px;
 }
 
 @keyframes move{
-  from{ background-position: 0%; }
-  to{ background-position: 200%; }
+  from { background-position: 0% }
+  to   { background-position: 200% }
 }
 
-
-/* ===============================
-   TEXT
-================================*/
+/* ========== INTRO TEXT ========== */
 h5{
   text-align: center;
-  font-size: 38px;
-  color: #b8b3c7;
-  margin: 10px 0;
+  font-size: 32px;
+  margin-top: 10px;
+  margin-bottom: 10px;
+  color: #cfcbe6;
 }
 
 p{
   text-align: center;
-  font-size: 22px;
-  color:#9a92a7;
-  max-width: 800px;
-  margin: 10px auto;
+  font-size: 18px;
+  max-width: 700px;
+  margin: 0 auto;
   line-height: 1.6;
+  color:#b9b4d0;
 }
 
-
-/* ===============================
-   INPUT AREA
-================================*/
+/* ========== INPUT AREA ========== */
 .input-area{
-  margin-top: 35px;
+  margin-top: 40px;
   display: flex;
   flex-direction: column;
   align-items: center;
-  gap: 12px;   /* spacing between input & button */
+  gap: 15px;
 }
 
-
-/* password box */
+/* input */
 #password{
-  width: 420px;
+  width: 90%;
+  max-width: 450px;
   padding: 16px 20px;
-  font-size: 18px;
+  font-size: 16px;
   border-radius: 14px;
   border: 1px solid rgba(255,255,255,0.2);
   background: rgba(255,255,255,0.07);
@@ -114,17 +106,13 @@ p{
   color: #d8b4fe;
 }
 
-
-/* ===============================
-   BUTTON
-================================*/
+/* button */
 .analyze{
   background: linear-gradient(90deg,#7c3aed,#c084fc);
   border: none;
   padding: 12px 30px;
   border-radius: 12px;
   color: white;
-  font-size: 18px;
   font-weight: 600;
   cursor: pointer;
   transition: 0.25s ease;
@@ -135,80 +123,59 @@ p{
   box-shadow: 0 10px 25px rgba(192,132,252,0.5);
 }
 
-
-/* ===============================
-   RESULT TEXT
-================================*/
+/* ========== RESULT ========== */
 #result{
-  font-size: 24px;
-  font-weight: bold;
   min-height: 30px;
-
+  font-size: 22px;
+  font-weight: bold;
   opacity: 0;
   transform: translateY(10px);
   transition: all 0.3s ease;
-  text-align: center;
 }
 
-
-/* ===============================
-   ANIMATIONS
-================================*/
+/* ========== ANIMATIONS ========== */
 @keyframes shake{
   0%,100% { transform: translateX(0); }
   25% { transform: translateX(-5px); }
   75% { transform: translateX(5px); }
 }
-
-.shake{
-  animation: shake 0.3s ease 2;
-}
+.shake{ animation: shake 0.3s ease 2; }
 
 @keyframes pulse{
-  from{ transform: scale(1); }
-  to{ transform: scale(1.05); }
+  from { transform: scale(1); }
+  to { transform: scale(1.05); }
 }
-
-.pulse{
-  animation: pulse 0.4s ease 2 alternate;
-}
+.pulse{ animation: pulse 0.4s ease 2 alternate; }
 
 @keyframes glow{
-  from{ text-shadow: 0 0 5px #22c55e; }
-  to{ text-shadow: 0 0 20px #22c55e; }
+  from { text-shadow: 0 0 5px #22c55e; }
+  to   { text-shadow: 0 0 20px #22c55e; }
 }
+.glowStrong{ animation: glow 0.5s ease 2 alternate; }
 
-.glowStrong{
-  animation: glow 0.5s ease 2 alternate;
-}
+/* ========== MOBILE FIX ========== */
+@media (max-width: 600px){
 
+  .title{
+    font-size: 42px;
+  }
 
-/* ===============================
-   BACKGROUND SHAPES
-================================*/
-.bg-shapes span{
-  position: fixed;
-  width: 300px;
-  height: 300px;
-  border-radius: 50%;
-  filter: blur(90px);
-  z-index: -1;
-  animation: floatShape 10s infinite alternate ease-in-out;
-}
+  h5{
+    font-size: 20px;
+  }
 
-.bg-shapes span:nth-child(1){
-  background: #966edc;
-  top: -50px;
-  left: -50px;
-}
+  p{
+    font-size: 14px;
+    padding: 0 15px;
+  }
 
-.bg-shapes span:nth-child(2){
-  background: #ac89cf;
-  bottom: -50px;
-  right: -50px;
-}
+  .input-area{
+    margin-top: 25px;
+    gap: 12px;
+  }
 
-@keyframes floatShape{
-  from{ transform: translateY(0); }
-  to{ transform: translateY(40px); }
+  .analyze{
+    width: 80%;
+  }
+
 }
